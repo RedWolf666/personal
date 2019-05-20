@@ -9,6 +9,7 @@ let newYear = (function(){
         let mult = _windowBox('clientWidth')/750*100
         mult>100&&(mult=100)
         document.documentElement.style.fontSize = mult + 'px'
+        $('.center').css('display','block')
     }
     let auto = () => {
         window.onresize = () => {
