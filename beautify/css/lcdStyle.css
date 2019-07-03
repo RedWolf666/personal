@@ -1,0 +1,348 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*在900X768以上适配*/
+body{
+    width: 1920px;
+    height: 900px;
+    background: url("../img/bg.png") no-repeat;
+	background-size:100% 100%;
+	background-repeat:repeat-y;
+    position: relative;
+	overflow:hidden;
+}
+@media screen and (max-width: 1400px) {
+
+}
+header{
+    width:-webkit-calc(100% - 15px);
+    width:-moz-calc(100% - 15px);
+    width:calc(100% - 15px);
+    height: 40px;
+    margin-left: 15px;
+	color:white;
+    z-index: 2;
+    position: relative;
+}
+header li{
+    float: left;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+header li:hover{
+}
+.sanJiao{
+    transform:rotate(180deg);
+    margin-left: 5px;
+    position: relative;
+    top:1px;
+}
+section{
+    width:-webkit-calc(82% - 32px);
+    width:-moz-calc(82% - 32px);
+    width:calc(82% - 32px);
+    height:-webkit-calc(100% - 70px);
+    height:-moz-calc(100% - 70px);
+    height:calc(100% - 70px);
+    background: url("../img/content_title.png") no-repeat;
+	background-size:100% 100%;;
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    margin-left: 15px;
+	padding-top:45px;
+	padding-left:5px;
+    z-index: 1;
+}
+aside{
+    width:-webkit-calc(18% );
+    width:-moz-calc(18% );
+    width:calc(18% );
+    height:-webkit-calc(100% - 40px);
+    height:-moz-calc(100% - 40px);
+    height:calc(100% - 40px);
+    float: left;
+    margin-top: 15px;
+	color:white;
+}
+aside li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-bottom: 1px rgba(0,0,0,0) solid;
+	background:url("../img/leftrtvchecked.png") no-repeat;
+	background-size:100% 100%;
+    cursor: pointer;
+    position: relative;
+}
+aside li img{
+    vertical-align: middle;
+}
+.sanJiao1{
+    float: right;
+    margin-right: 10px;
+    width: 15px;
+    transform:rotate(90deg);
+    margin-top: 13px;
+}
+#caoZuo{
+    height: 30px;
+    position: absolute;
+	left:20px;
+	top:10px;
+	color:white;
+}
+#caoZuo1{
+    height: 30px;
+    position: absolute;
+    right:10px;
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+	top:-5px;
+	color:white;
+}
+#caoZuo1 img{
+    position: relative;
+    top:2px;
+}
+#caoZuo1 input{
+    cursor: pointer;
+    position: relative;
+    top:4px;
+}
+#caoZuo1:hover{
+    opacity: 0.8;
+}
+#caoZuo li{
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+#caoZuo li:hover{
+    opacity: 0.8;
+}
+#caoZuo li img{
+    margin-right: 5px;
+}
+
+.xiangXi{
+    position: relative;
+    background:url("../img/leftrtvchecked.png") no-repeat;
+	background-size:100% 100%;
+    width:-webkit-calc(100%- 15px);
+    width:-moz-calc(100%- 15px);
+    width:calc(100%- 15px);
+    display: none;
+    border-bottom: 2px rgba(0,0,0,0) solid;
+    padding-top: 15px;
+    padding-left: 12px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+.yiJian{
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+	border:1px rgba(0,0,0,0) solid;
+}
+input[type=range] {
+    -webkit-appearance: none;
+    width:-webkit-calc(100%- 10px);
+    width:-moz-calc(100%- 10px);
+    width:calc(100%- 10px);
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+    position: relative;
+    top: 2px;
+}
+.Clear{
+    clear: both;
+}
+.chongZhi{
+    font-size: 12px;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    cursor: pointer;
+    opacity: 0.2;
+}
+.chongZhi:hover{
+    opacity: 0.8;
+}
+
+.xiangXi label{
+    float: left;
+    margin-top: 8px;
+}
+.xiangXiValue{
+    float: right;
+    margin-right: 10px;
+    width: 25px;
+    text-align: right;
+    margin-top: 8px;
+}
+.xiangXi input{
+    float: right;
+    margin-top: 8px;
+}
+.liContent{
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    z-index: 1;
+    background:#3C6E83;
+    width: 100px;
+}
+.liContent li{
+    clear: both;
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+}
+.liContent li:hover{
+    background:#00667B;
+}
+#chiCun1{
+    width: 300px;
+}
+#chiCun1 li{
+    line-height: 40px;
+    text-align: left;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    width: 290px;
+}
+#chiCun1 li:hover{
+    background:#3C6E83;
+}
+#chiCun1 input[type=text]{
+    width: 100px;
+    position: relative;
+    top: 1px;
+}
+#chiCun1 input[type=range]
+{
+    position: relative;
+    top: 4px;
+}
+#chiCun1 input[type=checkbox]
+{
+    position: relative;
+    top: 2px;
+}
+#chiCun1 button{
+    width: 60px;
+    display: inline-block;
+    margin-left: 55px;
+}
+#suoDing{
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    border-left: 1px #7A7A7A solid;
+}
+canvas{
+    border: 0px red solid;
+   /* -ms-transform:translate(-50%,-50%);!* IE 9 *!
+    -moz-transform:translate(-50%,-50%);!* Firefox *!
+    -webkit-transform:translate(-50%,-50%);!* Safari 和 Chrome *!
+    -o-transform:translate(-50%,-50%);!* Opera *!*/
+    /*width: 800px!important;*/
+    cursor: default;
+	position:absolute;
+	top:45px;;
+	left:8px;;
+}
+#addBili{
+    position: absolute;
+    left:50%;
+    top:50%;
+    -ms-transform:translate(-50%,-50%);/* IE 9 */
+    -moz-transform:translate(-50%,-50%);/* Firefox */
+    -webkit-transform:translate(-50%,-50%);/* Safari 和 Chrome */
+    -o-transform:translate(-50%,-50%);/* Opera */
+    z-index: 10;
+    width: 200px;
+    height: 140px;
+    background: #FBFBFB;
+    color: #9B9B9B;
+    display: none;
+}
+#addBili p{
+    text-align: center;
+    color: black;
+    padding-top: 10px;
+}
+#addBili input{
+    width: 90px;
+    height: 16px;
+}
+#addBili div{
+    font-size: 14px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+#addBili div:hover{
+    color: black;
+}
+#addBili button{
+    width: 60px;
+    display: inline-block;
+    margin-left: 23px;
+    margin-top: 10px;
+}
+#jieTu{
+    border: 2px red solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    cursor: move;
+}
+#caiJianTitle{
+    cursor: pointer;
+}
+#duiBi{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    left: 53%;
+    max-width: 630px;
+    max-height: 871px;
+    display:none;
+}
+#yuan {
+    display:none;
+}
+.yiJian:hover{
+	background:#004158;
+	border-radius:5px;
+	border:1px #477783 solid;
+}

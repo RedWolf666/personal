@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+    <title>图像增强</title>
+    <link href='css/lcdStyle.css' rel='stylesheet' type='text/css' />
+   
+
+</head>
+<body>
+<header>
+    <ul id="list">
+        <li id="daKai" class="listLi" ><input id="logoimg" class="addlogo" type="file" multiple accept="image/*" name="logo" style="display: none;">打开</li>
+        <li id="saveHtml" class="listLi">保存</li>
+        <li id="save" class="listLi">另存为</li>
+        <li class="listLi">尺寸<img src="img/sanJiao.png" class="sanJiao">
+            <ul class="liContent" id="chiCun1">
+                <li>宽度：<input type="text" id="chiCun1Width" onkeyup="value=value.replace(/[^\d]/g,'') " maxlength="4">像素</li>
+                <li>高度：<input type="text" id="chiCun1Height" onkeyup="value=value.replace(/[^\d]/g,'') " maxlength="4">像素</li>
+                <!--<li>百分比：<input name="" type="range" min="-100" max="100" value="0" id="chiCun1Range"><span id="chiCun1RangeNum">100%</span></li>-->
+                <li><button value="确定" type="button" id="chiCun1btn1">确定</button><button value="重置" type="button" id="chiCun1btn2">重置</button></li>
+                <div id="suoDing"><input type="checkbox" checked="checked" id="suoDingCheck">锁定宽高比</div>
+            </ul>
+        </li>
+        <li class="listLi">
+            <div id="caiJianTitle"><img src="img/caiJian.png" style="margin-right: 5px;position: relative;top: 2px;">裁剪<img src="img/sanJiao.png" class="sanJiao"></div>
+            <ul class="liContent" style="width: 140px;" id="caiJian">
+                <li index="100:100">按1:1裁剪</li>
+                <li index="300:200">按3:2裁剪</li>
+                <li index="400:300">按4:3裁剪</li>
+                <li index="640:360">按16:9裁剪</li>
+                <li index="413:295">按标准1寸裁剪</li>
+                <li index="626:413">按标准2寸裁剪</li>
+                <li index="567:390">按小2寸裁剪</li>
+                <li index="390:260">按二代身份证裁剪</li>
+                <li index="354:472">按护照裁剪</li>
+                <li index="">添加自定义比例</li>
+                <!--<li index="" id="delete">删除常用比例</li>-->
+            </ul>
+        </li>
+        <li class="listLi">
+            <img src="img/xuanZhuan.png" style="margin-right: 5px;width:17px;position:relative;top:2px;">旋转<img src="img/sanJiao.png" class="sanJiao">
+            <ul class="liContent">
+                <li id="left">向左旋转</li>
+                <li id="right">向右旋转</li>
+                <li id="UD">上下翻转</li>
+                <li id="LR">左右翻转</li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<section>
+    <div id="caoZuo">
+        <ul>
+            <li id="tuoZhuai"><img src="img/tuoZhuai.png" style="position: relative;top: 4px;width:18px;">拖拽</li>
+            <li id="back"><img src="img/cheXiao.png">撤销</li>
+            <li id="next"><img src="img/cheXiao.png" style="-moz-transform:scaleX(-1);-webkit-transform:scaleX(-1);-o-transform:scaleX(-1);transform:scaleX(-1);">重做</li>
+            <li id="resetbtn"><img src="img/yuanTu.png" style="position: relative;top: 2px;">原图</li>
+            <li id="duiBiBtn">对比</li>
+        </ul>
+    </div>
+    <div id="caoZuo1">
+        尺寸：<span id="chiCun">1800 X 800</span>
+        <img src="img/down.png">
+        <input name="" type="range" min="-100" max="100" value="0" >
+        <img src="img/up.png">
+        <span id="caoZuoBili">100</span>%
+        <a href="" download="canvas_love.png" id="save_href" style="display:none;">
+        </a>
+    </div>
+    <canvas id="canvas">
+    </canvas>
+
+    <div id="jieTu"></div>
+    <img id="duiBi" src=""/>
+    <img src="" id="yuan" style="position: absolute;top:0;right:0;">
+</section>
+<aside>
+    <ul>
+        <div id="Filters">
+            <li><img src="img/meiHua.png" width="25px" style="margin-left: 10px;margin-right: 10px;">一键美化<img src="img/sanJiao1.png" class="sanJiao1"></li>
+            <div class="xiangXi">
+                <a class="yiJian" id="youHuabtn" >自动优化</a>
+                <a class="yiJian" id="exposurebtn">自动曝光</a>
+                <a class="yiJian" id="radialblurbtn">一键模糊</a>
+                <a class="yiJian" id="brightnessbtn">一键补光</a>
+                <a class="yiJian" id="brightnessbtn1">一键减光</a>
+                <a class="yiJian" id="claritybtn">一键锐化</a>
+            </div>
+            <li><img src="img/tiaoZheng.png" width="25px" style="margin-left: 8px;margin-right: 10px;">基本调整<img src="img/sanJiao1.png" class="sanJiao1"></li>
+            <div class="xiangXi">
+                <span class="chongZhi">重置</span>
+                <label for="brightness">亮度</label>
+                <span class="xiangXiValue">0</span>
+                <input id="brightness" name="brightness" type="range" min="-100" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="contrast">对比度</label>
+                <span class="xiangXiValue">0</span>
+                <input id="contrast" name="contrast" type="range" min="-100" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="saturation">饱和度</label>
+                <span class="xiangXiValue">0</span>
+                <input id="saturation" name="saturation" type="range" min="-100" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="stackBlur">清晰度</label>
+                <span class="xiangXiValue">0</span>
+                <input id="stackBlur" name="stackBlur" type="range" min="0" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+            </div>
+
+            <li><img src="img/seCai.png" width="20px" style="margin-left: 13px;margin-right: 10px;">色彩调整<img src="img/sanJiao1.png" class="sanJiao1"></li>
+            <div class="xiangXi">
+                <span class="chongZhi">重置</span>
+                <label for="hue">色调</label>
+                <span class="xiangXiValue">0</span>
+                <input id="hue" name="hue" type="range" min="0" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="red">红</label>
+                <span class="xiangXiValue">0</span>
+                <input id="red" name="red" type="range" min="0" max="255" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="green">绿</label>
+                <span class="xiangXiValue">0</span>
+                <input id="green" name="green" type="range" min="0" max="255" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="blue">蓝</label>
+                <span class="xiangXiValue">0</span>
+                <input id="blue" name="blue" type="range" min="0" max="255" value="0" class="camanJS">
+                <div class="Clear"></div>
+            </div>
+            <li><img src="img/liangDu.png" width="25px" style="margin-left: 9px;margin-right: 8px;">补光亮度<img src="img/sanJiao1.png" class="sanJiao1"></li>
+            <div class="xiangXi">
+                <span class="chongZhi">重置</span>
+                <label for="exposure">补光</label>
+                <span class="xiangXiValue">0</span>
+                <input id="exposure" name="exposure" type="range" min="-100" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+            </div>
+            <li><img src="img/zaoDiao.png" width="20px" style="margin-left: 11px;margin-right: 11px;">噪点调整<img src="img/sanJiao1.png" class="sanJiao1"></li>
+            <div class="xiangXi">
+                <span class="chongZhi">重置</span>
+                <label for="noise">噪点</label>
+                <span class="xiangXiValue">0</span>
+                <input id="noise" name="noise" type="range" min="0" max="100" value="0" class="camanJS">
+                <div class="Clear"></div>
+
+                <label for="vibrance" style="display: none;">Vibrance</label>
+                <input id="vibrance" name="vibrance" type="range" min="-100" max="100" value="0" style="display: none;">
+                <span class="xiangXiValue" style="display: none;">0</span>
+                <label for="sepia" style="display: none;">Sepia</label>
+                <input id="sepia" name="sepia" type="range" min="0" max="100" value="0" style="display: none;">
+                <span class="xiangXiValue" style="display: none;">0</span>
+            </div>
+        </div>
+    </ul>
+</aside>
+<div id="addBili">
+    <p>常用比例</p>
+    <div>宽度：<input type="text" maxlength="4" onkeyup="value=value.replace(/[^\d]/g,'') " id="zdyWidth">像素</div>
+    <div>高度：<input type="text" maxlength="4" onkeyup="value=value.replace(/[^\d]/g,'') " id="zdyHeight">像素</div>
+    <button type="button" value="确定"  id="qdAddBili">确定</button>
+    <button type="button" value="取消"  id="qxAddBili">取消</button>
+</div>
+<img src="" id="hidden" style="display: none;">
+<img src="" id="zhuan" style="display: none;">
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/caman.full.min.js"></script>
+<script type="text/javascript" src="js/imgJs.js"></script>
+<!-- <script type="text/javascript" src="js/lcdJs.js"></script> -->
+</html>
